@@ -1,3 +1,3 @@
 module.exports = {
-    secret: 'authConfig.auth.secret',
+    secret: process.env.JWT_SECRET,
 };

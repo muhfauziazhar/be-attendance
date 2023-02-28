@@ -1,17 +1,12 @@
-const db = require('../config/database');
-const User = db.user;
-
 verifyAdmin = (req, res, next) => {
-    User.findByPk(req.userId)
-        .then((user) => {
-            if (user.role !== 'admin') {
-                return res.status(403).send({ message: "User isn't admin" });
-            }
-            next();
-        })
-        .catch((err) => {
-            res.status(500).send({ message: err.message });
-        });
+    try {
+        if (req.userRole !== 'admin') {
+            return res.status(403).send({ message: "User isn't admin" });
+        }
+        next();
+    } catch (error) {
+        res.status(500).send({ message: error.message });
+    }
 };
 
 const hasRoleAdmin = {
