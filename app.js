@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/', authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/attendances', attendanceRoutes);
+app.use('/users', userRoutes);
+app.use('/attendances', attendanceRoutes);
 
 const PORT = process.env.PORT || 3000;
 
